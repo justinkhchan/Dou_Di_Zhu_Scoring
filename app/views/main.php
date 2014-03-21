@@ -54,7 +54,7 @@
 	
 		var scoreModifier = 10;
 	
-		/*
+
 		var playerNames = new Array();
 		playerNames[0] = "Player 0";
 		playerNames[1] = "Player 1";
@@ -68,21 +68,7 @@
 		playerInitials[2] = "P2";
 		playerInitials[3] = "P3";
 		playerInitials[4] = "P4";
-		*/
-
-		var playerNames = new Array();
-		playerNames[0] = "CinGuu"; //"Player 0";
-		playerNames[1] = "Jacky"; //"Player 1";
-		playerNames[2] = "Justin"; //"Player 2";
-		playerNames[3] = "Kris"; //"Player 3";
-		playerNames[4] = "Shireen"; //"Player 4";
-		
-		var playerInitials = new Array();
-		playerInitials[0] = "CY"; //"P0";
-		playerInitials[1] = "SMK"; //"P1";
-		playerInitials[2] = "JC"; //"P2";
-		playerInitials[3] = "KY"; //"P3";
-		playerInitials[4] = "ST"; //"P4";		
+	
 		
 		var playerTotalScores = new Array(0,0,0,0,0);
 		var playerWins = new Array(0,0,0,0,0);
