@@ -54,6 +54,7 @@
 	
 		var scoreModifier = 10;
 	
+
 		var playerNames = new Array();
 		playerNames[0] = "Player 0";
 		playerNames[1] = "Player 1";
