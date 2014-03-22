@@ -1,6 +1,7 @@
 /bootstrap/compiled.php
 /app/config/database.php
 /app/views/playerlist.php
+/app/storage/logs/laravel.log
 /vendor
 composer.phar
 composer.lock
