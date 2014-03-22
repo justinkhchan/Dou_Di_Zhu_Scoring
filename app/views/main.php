@@ -261,6 +261,12 @@
 			insertNextGameRow();
 			updateRowTotals();
 		};
+		
+		window.onbeforeunload = function() {
+			if (totalGames > 0) {
+				return "Close game? Statistics will be lost.";
+			}
+		};
 	
 	</script>
 </head>
