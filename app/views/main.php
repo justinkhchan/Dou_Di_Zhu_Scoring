@@ -50,11 +50,12 @@
 			margin: 16px 0 0 0;
 		}
 	</style>
+	<script type="text/javascript" src="/playernames"></script>
 	<script type="text/javascript">
 	
 		var scoreModifier = 10;
 	
-
+		/*
 		var playerNames = new Array();
 		playerNames[0] = "Player 0";
 		playerNames[1] = "Player 1";
@@ -68,6 +69,7 @@
 		playerInitials[2] = "P2";
 		playerInitials[3] = "P3";
 		playerInitials[4] = "P4";
+		*/
 	
 		
 		var playerTotalScores = new Array(0,0,0,0,0);

@@ -19,3 +19,5 @@ Route::get('/', function()
 */
 
 Route::get('/', 'HomeController@getIndex');
+
+Route::get('/playernames', 'PlayerController@getIndex');
