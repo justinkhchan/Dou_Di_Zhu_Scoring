@@ -72,12 +72,12 @@
 		*/
 	
 		
-		var playerTotalScores = new Array(0,0,0,0,0);
+		var playerTotalScores = new Array(0,0,0,0,0);	// total scores of all games played so far
 		var playerWins = new Array(0,0,0,0,0);
 		var playerLosses = new Array(0,0,0,0,0);
-		var totalGames = 0;
+		var totalGames = 0;		// number of games played
 
-		var playerGameScores = new Array();
+		var playerGameScores = new Array();	// two dimensional array of each game's scores
 		
 		function insertPlayerNames() {
 			var scoreTable = document.getElementById("scoreTable");
@@ -142,7 +142,33 @@
 			var lastCell = row.insertCell(6);
 			lastCell.innerHTML = "-";
 			lastCell.className = "scoreClass";
-		}		
+		}
+
+		function undoLastGame() {
+			if (totalGames > 0) {
+				var lastGameScores = playerGameScores.pop();
+				totalGames--;
+				
+				for (var count = 0; count < 5; count++) {
+					if (lastGameScores[count] != 0) {
+						if (lastGameScores[count] < 0) {
+							playerLosses[count]--;
+						} else {
+							playerWins[count]--;
+						}
+					}
+					playerTotalScores[count] -= lastGameScores[count];
+				}
+				var scoreTable = document.getElementById("scoreTable");
+				scoreTable.deleteRow(totalGames+1); // delete last game row
+				scoreTable.deleteRow(totalGames+1); // delete game input row
+				scoreTable.deleteRow(totalGames+1); // delete totals row
+				insertNextGameRow();
+				updateRowTotals();				
+			} else {
+				alert("No games played yet!");
+			}
+		}
 		
 		function calculateGame() {
 			var numWinners = 0;
@@ -251,6 +277,7 @@
 
 			<!-- <input type="button" value="New Row" onClick="insertNextGameRow();" /> -->
 			<input type="button" value="Game Finished" onClick="calculateGame();" />
+			<input type="button" value="Undo Last Game" onClick="undoLastGame();" />
 		</div>
 	</div>
 </body>
