@@ -37,8 +37,23 @@
 			padding: 5px;
 		}
 		
+		#playerNames	{
+			border: 1px solid #AAAAAA;
+			border-collapse: collapse;
+			margin: 0px auto;
+		}
+		
+		.playerClass {
+			border: 1px solid #AAAAAA;
+			padding: 5px;
+		}		
+		
 		#textNumBombs {
 			width: 50px;
+		}
+		
+		.separatorDiv {
+			padding: 5px;
 		}
 
 		a, a:visited {
@@ -76,12 +91,13 @@
 		var playerWins = new Array(0,0,0,0,0);
 		var playerLosses = new Array(0,0,0,0,0);
 		var totalGames = 0;		// number of games played
+		var changeNamesActive = false;
 
 		var playerGameScores = new Array();	// two dimensional array of each game's scores
 		
 		function insertPlayerNames() {
 			var scoreTable = document.getElementById("scoreTable");
-			var rowNames = scoreTable.insertRow(-1);
+			var rowNames = scoreTable.insertRow(0);
 			rowNames.className = "scoreClass";
 			
 			var cellNames = new Array();
@@ -256,10 +272,55 @@
 			updateRowTotals();
 		}
 		
+		function changePlayerNames() {
+			var changeButton = document.getElementById("changePlayerButton");
+			if (changeNamesActive == false) {
+				changeNamesActive = true;
+				
+				changeButton.value = "Changes done, update";
+				showPlayerTable();
+				
+				for (var count = 0; count < 5; count++) {
+						document.getElementById(("playerName" + count)).value = playerNames[count];
+						document.getElementById(("playerInit" + count)).value = playerInitials[count];
+				}
+				
+			} else {
+				changeNamesActive = false;
+				changeButton.value = "Change Player Names";
+				
+				for (var count = 0; count < 5; count++) {
+						playerNames[count] = document.getElementById(("playerName" + count)).value;
+						playerInitials[count] = document.getElementById(("playerInit" + count)).value;
+				}
+				
+				hidePlayerTable();
+				var scoreTable = document.getElementById("scoreTable");
+				scoreTable.deleteRow(0);
+				insertPlayerNames();
+				
+				scoreTable.deleteRow(totalGames+1); // delete game input row
+				scoreTable.deleteRow(totalGames+1); // delete totals row
+				insertNextGameRow();
+				updateRowTotals();		
+			}
+		}
+		
+		function hidePlayerTable() {
+			var namesTable = document.getElementById("playerNames");
+			namesTable.style.display = "none";
+		}
+		
+		function showPlayerTable() {
+			var namesTable = document.getElementById("playerNames");
+			namesTable.style.display = "table";
+		}
+		
 		window.onload = function() {
 			insertPlayerNames();
 			insertNextGameRow();
 			updateRowTotals();
+			hidePlayerTable();
 		};
 		
 		window.onbeforeunload = function() {
@@ -275,15 +336,48 @@
 		DDZ 鬥地主 (Fighting the Landlord) - Scoring
 	</div>
 	<div class="mainContent">
-		<table id="scoreTable">
-		</table>
+		<div class="separatorDiv">
+			<table id="scoreTable">
+			</table>
+		</div>
 		<div id="testDiv">
 		</div>
-		<div>
+		<div class="separatorDiv">
 
 			<!-- <input type="button" value="New Row" onClick="insertNextGameRow();" /> -->
 			<input type="button" value="Game Finished" onClick="calculateGame();" />
 			<input type="button" value="Undo Last Game" onClick="undoLastGame();" />
+		</div>
+		<div class="separatorDiv">
+			<input type="button" value="Change Player Names" id="changePlayerButton" onClick="changePlayerNames();" />
+		</div>
+		<div class="separatorDiv">
+			<table id="playerNames">
+				<tr class="playerClass">
+					<td class="playerClass">Player Name</td>
+					<td class="playerClass">Player Initials</td>
+				</tr>
+				<tr class="playerClass">
+					<td class="playerClass"><input type="text" value="" id="playerName0" /></td>
+					<td class="playerClass"><input type="text" value="" id="playerInit0" /></td>
+				</tr>
+				<tr class="playerClass">
+					<td class="playerClass"><input type="text" value="" id="playerName1" /></td>
+					<td class="playerClass"><input type="text" value="" id="playerInit1" /></td>
+				</tr>
+				<tr class="playerClass">
+					<td class="playerClass"><input type="text" value="" id="playerName2" /></td>
+					<td class="playerClass"><input type="text" value="" id="playerInit2" /></td>
+				</tr>
+				<tr class="playerClass">
+					<td class="playerClass"><input type="text" value="" id="playerName3" /></td>
+					<td class="playerClass"><input type="text" value="" id="playerInit3" /></td>
+				</tr>
+				<tr class="playerClass">
+					<td class="playerClass"><input type="text" value="" id="playerName4" /></td>
+					<td class="playerClass"><input type="text" value="" id="playerInit4" /></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </body>
