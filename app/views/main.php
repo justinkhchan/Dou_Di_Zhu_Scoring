@@ -349,9 +349,6 @@
 			<input type="button" value="Undo Last Game" onClick="undoLastGame();" />
 		</div>
 		<div class="separatorDiv">
-			<input type="button" value="Change Player Names" id="changePlayerButton" onClick="changePlayerNames();" />
-		</div>
-		<div class="separatorDiv">
 			<table id="playerNames">
 				<tr class="playerClass">
 					<td class="playerClass">Player Name</td>
@@ -378,6 +375,9 @@
 					<td class="playerClass"><input type="text" value="" id="playerInit4" /></td>
 				</tr>
 			</table>
+		</div>
+		<div class="separatorDiv">
+			<input type="button" value="Change Player Names" id="changePlayerButton" onClick="changePlayerNames();" />
 		</div>
 	</div>
 </body>
